@@ -23,11 +23,13 @@ const remoteVideo = document.querySelector('#remoteVideo');
 function createRoom() {
   roomID = $('.input').val();
   socket.emit('createRoom', roomID);
+  location.href = "room.html";
 }
 
 function joinRoom() {
   roomID = $('.input').val();
   socket.emit('joinRoom', roomID);
+  location.href = "room.html";
 }
 
 socket.on('host', function(roomID) {

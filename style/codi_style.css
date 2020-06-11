@@ -1,0 +1,136 @@
+html{
+	height: 99%;
+}
+
+body{
+	height: 99%;
+	background-color: #eee;
+}
+
+#wrapper{
+	width: 95%;
+	height: 90%;
+	position: absolute;
+}
+
+#codeeditor{
+	width: 80%;
+	height: 100%;
+	position: relative;
+	background-color:#888888;
+	border: 1px solid #333333;
+	float: left;
+}
+
+#side{
+	float: right;
+	width: 19%;
+	height: 100%;
+}
+
+h1{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#person{
+	width: 100%;
+	height: 35%;
+}
+
+#personc{
+	width: 100%;
+	height: 75%;
+}
+
+#space{
+	height: 10%;
+}
+
+#inner_space{
+	height: 2%;
+}
+
+#code_size{
+	background-color: #4CAF50;
+	color: white;
+	height: 5%;
+	overflow-y: auto;
+	max-height: 5%;
+	text-align: center;
+	line-height: 40px;
+}
+
+#select_mode{
+	width: 100%;
+	height: 5%;
+	border: none;
+	background: #F96;
+	border-radius: 3px;
+	color: white;
+}
+
+.dropcode{
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+.dropdown{
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.dropcode-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 100%;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropcode-content a {
+	color: black;
+	height: 5%;
+	padding: 3%;
+	text-decoration: none;
+	display: block;
+}
+
+.dropcode-content a:hover {
+	background-color: #f1f1f1
+}
+
+.dropdown:hover .dropcode-content {
+	display: block;
+}
+
+.dropdown:hover .dropcode {
+	background-color: #3e8e41;
+}
+
+[contenteditable="true"].single-line {
+    white-space: nowrap;
+    width:100%;
+    overflow: hidden;
+} 
+
+[contenteditable="true"].single-line br {
+    display:none;
+
+}
+
+[contenteditable="true"].single-line * {
+    display:inline;
+    white-space:nowrap;
+}
+
+.CodeMirror{
+	font-size: 20px;
+}
