@@ -1,0 +1,96 @@
+/*
+    file  : style.css
+    autor : 정재균 (jgiraffe@naver.com)
+    breif : CODi style sheet
+*/
+
+/********** default **********/
+* {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+       
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+    color: white;
+    text-align: center;
+}
+
+.main, .connect, .edit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* #dc6c5f */ 
+}
+
+.connect, .edit {
+    display: none;
+}
+
+/********** main page **********/
+.main * {
+    position: relative;
+    top: 35%;
+}
+
+/* CODi logo */
+.main h1 {
+    font-size: 7em;
+    letter-spacing: 0.1em;
+}
+
+.main button {
+    width: 5em;
+    height: 2em;
+    margin-top: 1.1em;
+    background-color: red;
+}
+
+.main button:hover {
+    cursor: pointer;
+    color: black;
+    background-color: cyan;
+}
+
+.typingtext {
+    width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    border-right: 2px solid;
+    margin: 0 auto;
+    
+    animation:
+    typing 2.2s steps(26, end),
+    bar 0.8s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 400px; }
+}
+
+@keyframes bar {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+/********** connect page **********/
+.connect * {
+    position: relative;
+    top: 33%;
+    color : black;
+}
+
+/********** editor page **********/
+video {
+    max-width: 100%;
+    width: 320px;
+}
+
+#editor {
+    background-color: white;
+    color: black;
+    text-align: left;
+}

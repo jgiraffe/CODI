@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>CODi</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/style/style.css"/>
+</head>
+
+<body>
+    <div class = "edit">
+        <h1>CODi</h1>
+        <video id="localVideo" autoplay playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+        <textarea id="editor" placeholder="Type Your Text..."></textarea>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script/connect.js"></script>
+    <script src="/script/editor.js"></script>
+    <script src="/script/action.js"></script>
+
+    <div class = "main">
+        <h1>CODi</h1>
+        <p class = "typingtext">CODi 는 빠르고 간편한 실시간 코드 공유 플랫폼입니다.</p>
+        <p><button onclick="mainToConnect();">start</button></p>
+    </div>
+
+    <div class = "connect">
+        <input type="text" class="input">
+        <button onclick="createRoom();">Create Room</button>
+        <button onclick="joinRoom();">Join Room</button>
+    </div>
+</body>
+
+</html>
