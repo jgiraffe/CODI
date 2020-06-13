@@ -3,13 +3,15 @@
 	<head>
 		<script src="codemirror/lib/codemirror.js"></script>
 		<link rel="stylesheet" href="codemirror/lib/codemirror.css">
-		<link rel="stylesheet" href="codemirror/theme/bespin.css">
+		<link rel="stylesheet" href="codemirror/theme/darcula.css">
 		<link rel="stylesheet" href="style/codi_style.css">
-		<script src="codemirror/mode/javascripts/javascripts.js"></script>
+		<script src="codemirror/mode/clike/clike.js"></script>
+		<script src="codemirror/mode/python/python.js"></script>
 		<script src="codemirror/mode/css/css.js"></script>
 		<script src="codemirror/addon/hint/show-hint.js"></script>
 		<script src="codemirror/addon/hint/css-hint.js"></script>
 		<script src="codemirror/addon/edit/closetag.js"></script>
+		<script src="script/codi_js.js"></script>
 		<link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
 		<meta Content-Type:text/html; charset="UTF-8">
 		<title>Codi</title>
@@ -18,19 +20,6 @@
 		<h1>Codi</h1>
 		<div id = "wrapper">
 			<div id="codeeditor"></div>
-			<script>
-				var editor = CodeMirror(document.getElementById("codeeditor"), {
-					theme: "bespin",
-					tabSize: 10,
-					tabindex: 10,
-					lineNumbers: true,
-					autoCloseTags: true,
-					autofocus: true,
-					spellcheck: true,
-					autocorrect: true,
-					extraKeys: {"Ctrl-Space": "autocomplete"}
-				});
-			</script>
 			<div id = "side">
 				<div id = "person">
 					<h1>User 1</h1>
@@ -42,18 +31,18 @@
 				</div>
 				<div id = "space"></div>
 				<div class="dropdown">
-					<button class="dropcode">Code</button>
-					<div class="dropcode-content">
-						<a href="#">C</a>
-						<a href="#">C++</a>
-						<a href="#">Java</a>
-						<a href="#">Phyton</a>
+					<button onclick="show_hide()" id="button">Code</button>
+					<div id="drop-content">
+						<a onclick="click_code(this.id)" id="C">C</a>
+						<a onclick="click_code(this.id)" id="C++">C++</a>
+						<a onclick="click_code(this.id)" id="Java">Java</a>
+						<a onclick="click_code(this.id)" id="Python">Python</a>
 					</div>
 				</div>
 				<div id="inner_space"></div>
-				<div id="code_size" contenteditable="true" class="single-line">글자크기</div>
+				<div id="code_size">글자크기: <input id="font_size" type="text" value="20" onchange="font_change(this.value)" />px</div>
 				<div id="inner_space"></div>
-				<button id="select_mode" type="button">Editing</button>
+				<button id="select_mode" type="button" onclick="test()">Editing</button>
 			</div>
 		</div>
 	</body>

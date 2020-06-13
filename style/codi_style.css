@@ -68,9 +68,18 @@ h1{
 	background: #F96;
 	border-radius: 3px;
 	color: white;
+	font-size: 16px;
 }
 
-.dropcode{
+#font_size{
+	border:none;
+	font-size:16px;
+	color: white;
+	background-color: transparent;
+	width: 10%;
+}
+
+#button{
 	background-color: #4CAF50;
 	color: white;
 	padding: 16px;
@@ -80,13 +89,7 @@ h1{
 	width: 100%;
 }
 
-.dropdown{
-	position: relative;
-	display: inline-block;
-	width: 100%;
-}
-
-.dropcode-content {
+#drop-content{
 	display: none;
 	position: absolute;
 	background-color: #f9f9f9;
@@ -95,7 +98,7 @@ h1{
 	z-index: 1;
 }
 
-.dropcode-content a {
+#drop-content a{
 	color: black;
 	height: 5%;
 	padding: 3%;
@@ -103,32 +106,14 @@ h1{
 	display: block;
 }
 
-.dropcode-content a:hover {
+#drop-content a:hover {
 	background-color: #f1f1f1
 }
 
-.dropdown:hover .dropcode-content {
-	display: block;
-}
-
-.dropdown:hover .dropcode {
-	background-color: #3e8e41;
-}
-
-[contenteditable="true"].single-line {
-    white-space: nowrap;
-    width:100%;
-    overflow: hidden;
-} 
-
-[contenteditable="true"].single-line br {
-    display:none;
-
-}
-
-[contenteditable="true"].single-line * {
-    display:inline;
-    white-space:nowrap;
+.dropdown{
+	position: relative;
+	display: inline-block;
+	width: 100%;
 }
 
 .CodeMirror{
