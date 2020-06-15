@@ -4,15 +4,46 @@
 <head>
     <title>CODi</title>
     <meta charset="utf-8">
+    <!-- CODi CSS -->
     <link rel="stylesheet" href="/style/style.css"/>
+    <link rel="stylesheet" href="/style/editor_style.css"/>
+
+    <!-- codemirror -->
+    <link rel="stylesheet" href="codemirror/addon/hint/show-hint.css">
+	<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+	<link rel="stylesheet" href="codemirror/theme/darcula.css">
+	<script src="codemirror/lib/codemirror.js"></script>
+    <script src="codemirror/mode/clike/clike.js"></script>
+	<script src="codemirror/mode/python/python.js"></script>
+	<script src="codemirror/mode/css/css.js"></script>
+	<script src="codemirror/addon/hint/show-hint.js"></script>
+	<script src="codemirror/addon/hint/css-hint.js"></script>
+    <script src="codemirror/addon/edit/closetag.js"></script>
 </head>
 
 <body>
     <div class = "edit">
-        <h1>CODi</h1>
-        <video id="localVideo" autoplay playsinline></video>
-        <video id="remoteVideo" autoplay playsinline></video>
-        <textarea id="editor" placeholder="Type Your Text..."></textarea>
+        <h2 style="text-align: center;">CODi</h2>
+        <div id = "wrapper">
+			<div id="codeeditor"></div>
+			<div id = "side">
+				<video id="localVideo" autoplay playsinline></video>
+                <video id="remoteVideo" autoplay playsinline></video>
+                <div id="inner_space"></div>
+                <div id="code_size">FONT SIZE : <input id="font_size" type="text" value="20" onchange="fontChange(this.value)" /></div>
+                <!-- div id = "space"></div -->
+                <div id="inner_space"></div>
+				<div class="dropdown">
+					<button onclick="showHide()" id="clickCodeButton">TEXT</button>
+					<div id="drop-content">
+						<a onclick="clickCode(this.id)" id="C">C</a>
+						<a onclick="clickCode(this.id)" id="C++">C++</a>
+						<a onclick="clickCode(this.id)" id="Java">Java</a>
+						<a onclick="clickCode(this.id)" id="Python">Python</a>
+					</div>
+				</div>	
+			</div>
+		</div>
     </div>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -28,9 +59,18 @@
     </div>
 
     <div class = "connect">
-        <input type="text" class="input">
-        <button onclick="createRoom();">Create Room</button>
-        <button onclick="joinRoom();">Join Room</button>
+        <h1>ENTER THE ROOM NUMBER</h1>
+        <p><input type="text" class="input"></p>
+        <script>
+            $(".input").on("keyup", function() {
+                $(this).val($(this).val().replace(/[^0-9]/g,""));
+                if(this.value.length > 4) {
+                    this.value = this.value.slice(0, 4);
+                }
+            });
+        </script>
+        <p><button onclick="createRoom();">CREATE</button></p>
+        <p><button onclick="joinRoom();">JOIN</button></p>
     </div>
 </body>
 

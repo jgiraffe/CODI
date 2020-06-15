@@ -1,20 +1,18 @@
 /*
-    file  : style.css
+    file  : style.css (CODi)
     autor : 정재균 (jgiraffe@naver.com)
-    breif : CODi style sheet
+    breif : css for main page, connect page
 */
 
 /********** default **********/
 * {
     font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    /*font-size: 16px;*/
        
     padding: 0;
     border: 0;
     margin: 0;
-
     color: white;
-    text-align: center;
 }
 
 .main, .connect, .edit {
@@ -30,8 +28,10 @@
 
 /********** main page **********/
 .main * {
+    font-size: 16px;
     position: relative;
     top: 35%;
+    text-align: center;
 }
 
 /* CODi logo */
@@ -78,19 +78,39 @@
 
 /********** connect page **********/
 .connect * {
+    font-size: 16px;
     position: relative;
     top: 33%;
-    color : black;
+    text-align: center;
+}
+
+.connect h1 {
+    font-size: 3em;
+}
+
+.connect .input, .connect button {
+    font-size: 40px;
+    font-weight: bold;
+    background-color: black;
+    border: 1px solid gray;
+    width: 220px;
+    height: 70px;
+    outline: none;
+    margin-top: 1%;
+    
+}
+
+.connect .input {
+    font-size: 55px;
+    letter-spacing: 10px;
+    width: 219px;
+    margin-top: 2%;
+}
+
+.connect button:hover {
+    cursor: pointer;
+    color: red;
 }
 
 /********** editor page **********/
-video {
-    max-width: 100%;
-    width: 320px;
-}
-
-#editor {
-    background-color: white;
-    color: black;
-    text-align: left;
-}
+/* */

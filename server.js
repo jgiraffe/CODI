@@ -46,13 +46,20 @@ io.sockets.on('connection', function(socket) {
     }
   });
 
-  socket.on('msg', function(msg) {
-    // for a real app, would be room-only (not broadcast)
-    socket.broadcast.emit('msg', msg);
+  socket.on('msg', function(msg, roomID) {
+    socket.broadcast.to(roomID).emit('msg', msg);
   });
 
-  socket.on('editortext', function(editortext) {
-    // for a real app, would be room-only (not broadcast)
-    socket.broadcast.emit('editortext', editortext);
+  socket.on('editortext', function(editortext, roomID) {
+    socket.broadcast.to(roomID).emit('editortext', editortext);
   });
+
+  socket.on('fontChange', function(fontSize, roomID) {
+    io.sockets.in(roomID).emit('fontChange', fontSize);
+  });
+
+  socket.on('clickCode', function(clickID, roomID) {
+    io.sockets.in(roomID).emit('clickCode', clickID);
+  });
+  
 });

@@ -1,7 +1,7 @@
 /*
     file  : connect.js (CODi)
     autor : 정재균 (jgiraffe@naver.com)
-    breif : signaling
+    breif : room socket event & signaling
 */
 
 // for connection
@@ -21,13 +21,17 @@ const remoteVideo = document.querySelector('#remoteVideo');
 
 //========== socket event ==========//
 function createRoom() {
-  roomID = $('.input').val();
-  socket.emit('createRoom', roomID);
+  if (roomIDCheck()) {
+    roomID = $('.input').val();
+    socket.emit('createRoom', roomID);
+  }
 }
 
 function joinRoom() {
-  roomID = $('.input').val();
-  socket.emit('joinRoom', roomID);
+  if (roomIDCheck()) {
+    roomID = $('.input').val();
+    socket.emit('joinRoom', roomID);
+  }
 }
 
 socket.on('host', function(roomID) {
@@ -43,6 +47,7 @@ socket.on('join', function(roomID) {
 socket.on('joined', function(room) {
   channel = true;
   connectToEditor();
+  clickCode('C'); // 게스트 입장 시 초기 값 C언어로 세팅
   gotVideo(); // room 입장 후 video stream을 가져와야함
 });
 
@@ -62,7 +67,7 @@ socket.on('full', function(roomID) {
 });
 
 function sendMsg(msg) {
-  socket.emit('msg', msg);
+  socket.emit('msg', msg, roomID);
 }
 
 socket.on('msg', function(msg) {
