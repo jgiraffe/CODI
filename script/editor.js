@@ -10,13 +10,9 @@ window.onload = function(){
 	var edit = CodeMirror(document.getElementById("codeeditor"), {
 		theme: "darcula",
 		tabSize: 10,
-		tabindex: 10,
+		indentUnit: 10,
 		lineNumbers: true,
-		autoCloseTags: true,
 		autofocus: true,
-		spellcheck: true,
-		autocorrect: true,
-		readOnly: false,
 		extraKeys: {"Ctrl-Space": "autocomplete"}
 	});
 	editor = document.querySelector('.CodeMirror').CodeMirror;

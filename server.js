@@ -7,12 +7,29 @@
 const http = require('http');
 const nodestatic = require('node-static');
 const socketio = require('socket.io');
+const https = require('https');
+const fs = require('fs');
 
-// server code
+
 const CODiServer = new(nodestatic.Server)();
+
+// http server
 const app = http.createServer(function(req, res) {
     CODiServer.serve(req, res);
-}).listen(80);
+}).listen(3000);
+
+// https server
+/*
+const options = {
+  key: fs.readFileSync('/keys/key.pem'),
+  cert: fs.readFileSync('/keys/cert.pem')
+};
+
+const app = https.createServer(options, (req, res) => {
+  res.writeHead(200);
+  res.end('CODi https');
+}).listen(3000);
+*/
 
 // socket code
 const io = socketio.listen(app);
