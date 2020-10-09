@@ -4,6 +4,7 @@
 - CODI : code/coding + coordinator
 - language : javascript, html, css
 - back-end : node.js + socket.io
-- p2p communication : WebRTC
+- p2p communication : webRTC
+- code editor : codemirror
 
-### index.html
+## index.html
