@@ -5,5 +5,5 @@
 - language : javascript, html, css
 - back-end : node.js + socket.io
 - p2p communication : WebRTC
-***
+
 ### index.html
