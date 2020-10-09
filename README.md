@@ -7,4 +7,7 @@
 - p2p communication : webRTC
 - code editor : codemirror
 
-## index.html
+## How to run
+
+  node server.js
+
