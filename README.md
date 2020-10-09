@@ -8,6 +8,8 @@
 - code editor : codemirror
 
 ## How to run
+ㅁㄴㅇ
 
   node server.js
+
 
