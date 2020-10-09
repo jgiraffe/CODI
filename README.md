@@ -4,5 +4,5 @@
 
 WebRTC와 socket.io를 이용한 화상 채팅이 가능한 1:1 코드 공동 작성 웹 사이트입니다.
 - FE : javascript, html, css
-- BE : Node.js, socket.io
+- BE : Node.js(javascript)
 - WebRTC
