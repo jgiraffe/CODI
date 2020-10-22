@@ -9,5 +9,5 @@
 
 ## How to run
 ```
-node server.js
+$ node server.js
 ```
