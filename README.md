@@ -4,7 +4,9 @@
 - codi는 code/coding과 coordinator의 합성어입니다.
 
 ## Stack
-- js, node.js, socket.io, webRTC, codemirror, html, css
+```
+JS / Node.js / Socket.io / WebRTC / Codemirror / HTML / CSS
+```
 
 ## How to run
 ```
