@@ -1,82 +1,65 @@
 /*
     file  : server.js (CODi)
     autor : 정재균 (jgiraffe@naver.com)
-    breif : back-end (http version -> localhost only)
+    breif : back-end
 */
 
-const http = require('http');
-const nodestatic = require('node-static');
-const socketio = require('socket.io');
-const https = require('https');
-const fs = require('fs');
+const http = require("http");
+const nodestatic = require("node-static");
+const socketio = require("socket.io");
+//const fs = require("fs");
 
-
-const CODiServer = new(nodestatic.Server)();
+const CODiServer = new nodestatic.Server();
 
 // http server
-const app = http.createServer(function(req, res) {
+const app = http
+  .createServer(function (req, res) {
     CODiServer.serve(req, res);
-}).listen(3000);
-
-// https server
-/*
-const options = {
-  key: fs.readFileSync('/keys/key.pem'),
-  cert: fs.readFileSync('/keys/cert.pem')
-};
-
-const app = https.createServer(options, (req, res) => {
-  res.writeHead(200);
-  res.end('CODi https');
-}).listen(3000);
-*/
+  })
+  .listen(3000);
 
 // socket code
 const io = socketio.listen(app);
-io.sockets.on('connection', function(socket) {
-  socket.on('createRoom', function(roomID) {
+io.sockets.on("connection", function (socket) {
+  socket.on("createRoom", function (roomID) {
     let isExist = io.sockets.adapter.rooms[roomID];
     if (isExist) {
-      socket.emit('exist', roomID);
-    }
-    else {
+      socket.emit("exist", roomID);
+    } else {
       socket.join(roomID); // join room
-      socket.emit('host', roomID);
+      socket.emit("host", roomID);
     }
   });
 
-  socket.on('joinRoom', function(roomID) {
+  socket.on("joinRoom", function (roomID) {
     let isExist = io.sockets.adapter.rooms[roomID];
     if (isExist) {
       // for 1:1 connection
-      if(Object.keys(isExist.sockets).length == 1) {
-        io.sockets.in(roomID).emit('join', roomID);
+      if (Object.keys(isExist.sockets).length == 1) {
+        io.sockets.in(roomID).emit("join", roomID);
         socket.join(roomID); // join room
-        socket.emit('joined', roomID);
+        socket.emit("joined", roomID);
+      } else {
+        socket.emit("full", roomID);
       }
-      else {
-        socket.emit('full', roomID);
-      }
-    }
-    else {
-      socket.emit('none', roomID);
+    } else {
+      socket.emit("none", roomID);
     }
   });
 
-  socket.on('msg', function(msg, roomID) {
-    socket.broadcast.to(roomID).emit('msg', msg);
+  socket.on("msg", function (msg, roomID) {
+    socket.broadcast.to(roomID).emit("msg", msg);
   });
 
-  socket.on('editortext', function(editortext, roomID) {
-    socket.broadcast.to(roomID).emit('editortext', editortext);
+  socket.on("editortext", function (editortext, roomID) {
+    socket.broadcast.to(roomID).emit("editortext", editortext);
   });
 
-  socket.on('fontChange', function(fontSize, roomID) {
-    io.sockets.in(roomID).emit('fontChange', fontSize);
+  socket.on("fontChange", function (fontSize, roomID) {
+    io.sockets.in(roomID).emit("fontChange", fontSize);
   });
 
-  socket.on('clickCode', function(clickID, roomID) {
-    io.sockets.in(roomID).emit('clickCode', clickID);
+  socket.on("clickCode", function (clickID, roomID) {
+    io.sockets.in(roomID).emit("clickCode", clickID);
   });
-  
 });
