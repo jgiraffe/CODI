@@ -4,38 +4,37 @@
     breif : back-end
 */
 
+// http server
 const http = require("http");
 const nodestatic = require("node-static");
-const socketio = require("socket.io");
-//const fs = require("fs");
-
-const CODiServer = new nodestatic.Server();
-
-// http server
+const codiServer = new nodestatic.Server();
 const app = http
   .createServer(function (req, res) {
-    CODiServer.serve(req, res);
+    codiServer.serve(req, res);
   })
   .listen(3000);
 
 // socket code
-const io = socketio.listen(app);
+const io = require("socket.io")(app);
 io.sockets.on("connection", function (socket) {
+  console.log("server : connected!");
+  // create room
   socket.on("createRoom", function (roomID) {
-    let isExist = io.sockets.adapter.rooms[roomID];
+    let isExist = io.sockets.adapter.rooms.get(roomID);
     if (isExist) {
       socket.emit("exist", roomID);
     } else {
       socket.join(roomID); // join room
       socket.emit("host", roomID);
+      console.log(roomID + " 생성됨");
     }
   });
-
+  // join room
   socket.on("joinRoom", function (roomID) {
-    let isExist = io.sockets.adapter.rooms[roomID];
+    let isExist = io.sockets.adapter.rooms.get(roomID);
     if (isExist) {
       // for 1:1 connection
-      if (Object.keys(isExist.sockets).length == 1) {
+      if (isExist.size == 1) {
         io.sockets.in(roomID).emit("join", roomID);
         socket.join(roomID); // join room
         socket.emit("joined", roomID);
