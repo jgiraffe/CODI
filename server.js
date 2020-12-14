@@ -12,7 +12,7 @@ const app = http
   .createServer(function (req, res) {
     codiServer.serve(req, res);
   })
-  .listen(3000);
+  .listen(80);
 
 // socket code
 const io = require("socket.io")(app);
